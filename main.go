@@ -1,3 +1,4 @@
+// https://goplay.tools/snippet/6NrT6dX-6gC
 package main
 
 import (
