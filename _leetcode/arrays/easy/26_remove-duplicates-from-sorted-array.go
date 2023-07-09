@@ -1,41 +1,46 @@
 package main
 
-import "sort"
+import "fmt"
 
 /*
-Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
+Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same. Then return the number of unique elements in nums.
 
-The overall run time complexity should be O(log (m+n)).
+Consider the number of unique elements of nums to be k, to get accepted, you need to do the following things:
+
+Change the array nums such that the first k elements of nums contain the unique elements in the order they were present in nums initially. The remaining elements of nums are not important as well as the size of nums.
+Return k.
 */
 
 /*
 Example 1:
 
-Input: nums1 = [1,3], nums2 = [2]
-Output: 2.00000
-Explanation: merged array = [1,2,3] and median is 2.
-
-
+Input: nums = [1,1,2]
+Output: 2, nums = [1,2,_]
+Explanation: Your function should return k = 2, with the first two elements of nums being 1 and 2 respectively.
+It does not matter what you leave beyond the returned k (hence they are underscores).
 Example 2:
 
-Input: nums1 = [1,2,5], nums2 = [3,4,6]
-Output: 2.50000
-Explanation: merged array = [1,2,3,4] and median is (2 + 3) / 2 = 2.5.
+Input: nums = [0,0,1,1,1,2,2,3,3,4]
+Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
+Explanation: Your function should return k = 5, with the first five elements of nums being 0, 1, 2, 3, and 4 respectively.
+It does not matter what you leave beyond the returned k (hence they are underscores).
 */
 
 func main() {
-
+	fmt.Println((removeDuplicates([]int{1, 1, 2})))
 }
-
-func medianOfTwoArrays(arr1 []int, arr2 []int) float32 {
-
-	merged_arr := append(arr1, arr2...)
-	sort.Ints(merged_arr)
-	tLen := len(merged_arr)
-
-	if tLen%2 == 0 {
-		return float32(merged_arr[(tLen/2)-1] + merged_arr[(tLen/2)])
-	} else {
-		return float32(merged_arr[(tLen / 2)])
+func removeDuplicates(nums []int) int {
+	cacheMap := make(map[int]int)
+	//uniqueArr := []int{}
+	var j = 0
+	for i := 0; i < len(nums); i++ {
+		v := nums[i]
+		if _, ok := cacheMap[v]; !ok {
+			//	uniqueArr = append(uniqueArr, v)
+			nums[j] = v
+			j++
+		}
+		cacheMap[v] = i
 	}
+	return j
 }
