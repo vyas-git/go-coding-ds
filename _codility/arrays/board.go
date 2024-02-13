@@ -23,30 +23,24 @@ func solution(U, L int, C []int) string {
 	}
 
 	for i := 0; i < N; i++ {
-		switch {
-		case C[i] == 0:
+		if C[i] == 0 {
 			matrix[0][i] = 0
 			matrix[1][i] = 0
-		case C[i] == U:
+		} else if C[i] == 2 {
 			matrix[0][i] = 1
-			matrix[1][i] = 0
-			U--
-		case C[i] == L:
-			matrix[0][i] = 0
 			matrix[1][i] = 1
-			L--
-		case C[i] > U:
-			matrix[0][i] = 0
-			matrix[1][i] = 1
-			L--
-		case C[i] > L:
-			matrix[0][i] = 1
-			matrix[1][i] = 0
 			U--
-		default:
-			matrix[0][i] = 1
-			matrix[1][i] = 0
-			U--
+			L--
+		} else if C[i] == 1 {
+			if U > L {
+				matrix[0][i] = 1
+				matrix[1][i] = 0
+				U--
+			} else {
+				matrix[0][i] = 0
+				matrix[1][i] = 1
+				L--
+			}
 		}
 	}
 
