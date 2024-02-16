@@ -9,6 +9,7 @@ type vals interface {
 }
 
 func Max[T vals](values []T) (T, error) {
+
 	if len(values) == 0 {
 		var zero T
 		return zero, errors.New("Max of empty slice")
