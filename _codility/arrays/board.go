@@ -1,4 +1,5 @@
 package main
+
 /*
 There is a board with 2 rows and N columns, represented by a matrix M. Rows are numbered from 0 to 1 from top to bottom and columns are numbered from 0 to N-1 from
 left to right. Each cell contains either 0 or a 1. You know that:
