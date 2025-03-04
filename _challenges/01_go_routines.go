@@ -5,7 +5,7 @@ import "fmt"
 // Assignment 1: Goroutine with Channel Problem: Write a Go program that calculates the sum of numbers from 1 to N concurrently using goroutines and channels.
 // The program should take the value of N as input from the user.
 
-func main() {
+func main2() {
 	var N int
 	fmt.Println("Enter a number ")
 
